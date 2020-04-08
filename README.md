@@ -1,7 +1,8 @@
 Role Name
 =========
 
-Ce role ansible permet d'installer Fail2ban sur une machine Linux Centos 7.
+Ce role ansible permet d'installer [Fail2ban](https://github.com/tassyk/security/blob/master/hardening_Fail2ban.md) sur une machine Linux Centos 7.
+
 Pour le moment, seul le jail pour SSH est configuré.
  
 Requirements
@@ -11,8 +12,15 @@ Requirements
 Role Variables
 --------------
 
-Les variables par défaut sont renseignés dans default/main.yml
-
+Les variables par défaut sont renseignés dans default/main.yml :
+```
+## SSH Jail
+- ban_time: temps de banissment
+- ssh_port: port ssh
+- ignore_ip: liste d'IP à ignorer
+- max_retry: nombre d'échec permis
+- log_path: fichier log
+```
 Dependencies
 ------------
 
