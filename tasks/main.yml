@@ -15,6 +15,7 @@
     state: latest
     #exclude: kernel*,foo*
   tags: update_all
+  when: update_pkg is defined and update_pkg
 
 # Handler showing how to clean yum metadata cache
 - name: yum-clean-metadata
