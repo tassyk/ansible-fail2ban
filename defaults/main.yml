@@ -1,7 +1,7 @@
 ---
 # defaults file for fail2ban
 
-update_pkg: yes
+update_pkg: True
 ## SSH Jail
 ban_time: 60
 ssh_port: ssh
