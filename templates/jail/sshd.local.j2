@@ -8,5 +8,7 @@ ignoreip ={{ignore_ip}}
 [sshd]
 port = {{ssh_port | default('ssh')}}
 enabled = true
-logpath = {{log_path | default('%(sshd_log)s')}}
+{% if log_path is defined and log_path != "" %}
+logpath = {{log_path}}
+{% endif %}
 maxretry = {{max_retry | default(5)}}

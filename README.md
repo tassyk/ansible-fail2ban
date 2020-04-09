@@ -14,6 +14,11 @@ Role Variables
 
 Les variables par défaut sont renseignés dans default/main.yml :
 ```
+update_pkg: mise à jour ou non des paquets du système
+
+## Options de configuration personnalisées
+costum_config: liste des paramètres 
+
 ## SSH Jail
 - ban_time: temps de banissment
 - ssh_port: port ssh

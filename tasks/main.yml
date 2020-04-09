@@ -33,7 +33,16 @@
 
 # Push SSH jail config file
 - template:
-    src: sshd.local.j2
+    src: jail/sshd.local.j2
     dest: /etc/fail2ban/jail.d/sshd.local
   notify: restart fail2ban
-  tags: config,sshd
+  tags: jail,sshd
+
+# push local config
+- template:
+    src: config/fail2ban.local.j2
+    dest: /etc/fail2ban/fail2ban.d/fail2ban.local
+  notify: restart fail2ban
+  tags: config
+  when: costum_config is defined and costum_config
+
