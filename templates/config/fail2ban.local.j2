@@ -1,6 +1,6 @@
-[definition]
-{% if costum_config is defined and costum_config %}
-{% for config in costum_config %}
+{% if fail2ban_config is defined and fail2ban_config %}
+[Definition]
+{% for config in fail2ban_config %}
 {{config}}
 {% endfor %}
 {% endif %}

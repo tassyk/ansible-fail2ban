@@ -17,7 +17,7 @@ Les variables par défaut sont renseignés dans default/main.yml :
 update_pkg: mise à jour ou non des paquets du système
 
 ## Options de configuration personnalisées
-costum_config: liste des paramètres 
+fail2ban_config: liste des paramètres 
 
 ## SSH Jail
 - ban_time: temps de banissment
@@ -55,7 +55,7 @@ Including an example of how to use your role (for instance, with variables passe
 
 Exemple d'exécution du playbook :
 ```
-ansible-playbook fail2ban.yml -i hosts -u user
+ansible-playbook fail2ban.yml -i hosts [-u user] [options]
 ```
 
 License

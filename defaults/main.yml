@@ -4,7 +4,7 @@
 update_pkg: True
 
 ## Custom configuration
-custom_config: []
+fail2ban_config: []
 
 ## SSH Jail
 ban_time: 60
