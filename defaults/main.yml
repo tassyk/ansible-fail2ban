@@ -1,0 +1,20 @@
+---
+# defaults file for fail2ban
+
+update_pkg: False
+
+## Custom configuration
+fail2ban_config:
+ - logtarget: "/var/log/fail2ban.log" 
+ - loglevel: "DEBUG"
+
+## Fail2ban Jail
+fail2ban_jail_file: "ssh.local" 
+fail2ban_jail:
+ - name: DEFAULT
+   bantime: 60
+   ignoreself: true
+   maxretry: 3
+ - name: ssh
+   port: ssh
+   enabled: true

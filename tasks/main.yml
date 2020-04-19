@@ -1,0 +1,48 @@
+---
+# tasks file for fail2ban
+
+- name: Add Epel repository
+  yum_repository:
+    name: epel
+    description: EPEL YUM repo
+    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    gpgcheck: no
+  tags: epel
+
+- name: upgrade all packages, excluding kernel & some related packages
+  yum:
+    name: '*'
+    state: latest
+    #exclude: kernel*,foo*
+  tags: update_all
+  when: update_pkg is defined and update_pkg
+
+# Handler showing how to clean yum metadata cache
+- name: yum-clean-metadata
+  command: yum clean metadata
+  args:
+    warn: no
+
+- name: install fail2ban
+  yum:
+    name: fail2ban
+    state: present
+    enablerepo: "epel"
+  notify: start fail2ban
+  tags: install
+
+# Push SSH jail config file
+- template:
+    src: jail/jail.local.j2
+    dest: "/etc/fail2ban/jail.d/{{fail2ban_jail_file}}"
+  #notify: restart fail2ban
+  tags: jail
+
+# push local config
+- template:
+    src: config/fail2ban.local.j2
+    dest: /etc/fail2ban/fail2ban.d/fail2ban.local
+  #notify: restart fail2ban
+  tags: config
+  when: fail2ban_config is defined and fail2ban_config
+
