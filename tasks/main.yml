@@ -33,14 +33,14 @@
 
 # Push SSH jail config file
 - template:
-    src: jail/jail.local.j2
+    src: jail.d/jail.local.j2
     dest: "/etc/fail2ban/jail.d/{{fail2ban_jail_file}}"
   #notify: restart fail2ban
   tags: jail
 
 # push local config
 - template:
-    src: config/fail2ban.local.j2
+    src: fail2ban.d/fail2ban.local.j2
     dest: /etc/fail2ban/fail2ban.d/fail2ban.local
   #notify: restart fail2ban
   tags: config
