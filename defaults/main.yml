@@ -9,12 +9,12 @@ fail2ban_config:
  - loglevel: "DEBUG"
 
 ## Fail2ban Jail
-fail2ban_jail_file: "ssh.local" 
+fail2ban_jail_file: "sshd.local" 
 fail2ban_jail:
  - name: DEFAULT
    bantime: 60
    ignoreself: true
    maxretry: 3
- - name: ssh
+ - name: sshd
    port: ssh
    enabled: true

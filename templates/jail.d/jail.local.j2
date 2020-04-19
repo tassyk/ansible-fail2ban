@@ -1,7 +1,15 @@
 {% if fail2ban_jail is defined and fail2ban_jail %}
 {% for jail in fail2ban_jail %}
+{% if jail.comment is defined %}
+#{{jail.comment}}
+{% endif %}
 {% if jail.name is defined %}
+{% if jail.name == "DEFAULT" %}
 [{{jail.name}}]
+{% else %}
+{{ "" }}
+[{{jail.name}}]
+{% endif %}
 {% endif %}
 {% if jail.enabled is defined %}
 enabled = {{jail.enabled}}
