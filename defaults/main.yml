@@ -6,7 +6,7 @@ update_pkg: False
 ## Custom configuration
 fail2ban_config:
  - logtarget: "/var/log/fail2ban.log" 
- - loglevel: "DEBUG"
+ - loglevel: "INFO"
 
 ## Fail2ban Jail
 fail2ban_jail_file: "sshd.local" 
