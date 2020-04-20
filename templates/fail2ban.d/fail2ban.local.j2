@@ -1,6 +1,13 @@
 {% if fail2ban_config is defined and fail2ban_config %}
-[Definition]
 {% for config in fail2ban_config %}
+{% if config.name is defined %}
+{% if config.name == "DEFAULT" or config.name == "Definition" %}
+[{{config.name}}]
+{% else %}
+{{ "" }}
+[{{config.name}}]
+{% endif %}
+{% endif %}
 {% if config.loglevel is defined %}
 loglevel = {{config.loglevel}}
 {% endif %}
