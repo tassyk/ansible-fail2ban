@@ -35,14 +35,14 @@
 - template:
     src: jail.d/jail.local.j2
     dest: "/etc/fail2ban/jail.d/{{fail2ban_jail_file}}"
-  #notify: restart fail2ban
+  notify: restart fail2ban
   tags: jail
 
 # push local config
 - template:
     src: fail2ban.d/fail2ban.local.j2
     dest: /etc/fail2ban/fail2ban.d/fail2ban.local
-  #notify: restart fail2ban
+  notify: restart fail2ban
   tags: config
   when: fail2ban_config is defined and fail2ban_config
 
