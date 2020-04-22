@@ -13,7 +13,7 @@
   yum:
     name: '*'
     state: latest
-    #exclude: kernel*,foo*
+    exclude: "{{excludes_update_pkg | deafult('omit')}}"
   tags: update_all
   when: update_pkg is defined and update_pkg
 
@@ -23,6 +23,7 @@
   args:
     warn: no
 
+# install fail2ban packages
 - name: install fail2ban
   yum:
     name: fail2ban
@@ -31,12 +32,14 @@
   notify: start fail2ban
   tags: install
 
+
 # Push SSH jail config file
 - template:
     src: jail.d/jail.local.j2
-    dest: "/etc/fail2ban/jail.d/{{fail2ban_jail_file}}"
+    dest: "/etc/fail2ban/jail.d/{{fail2ban_jail_file | defaul('jail.local')}}"
   notify: restart fail2ban
   tags: jail
+  when: fail2ban_jail is defined and fail2ban_jail
 
 # push local config
 - template:
