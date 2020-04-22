@@ -1,0 +1,33 @@
+{% if fail2ban_filter is defined and fail2ban_filter %}
+{% for filter in fail2ban_filter %}
+{% if filter.name is defined %}
+{% if filter.name == "Init" %}
+[{{filter.name}}]
+{% else %}
+{{ "" }}
+[{{filter.name}}]
+{% endif %}
+{% endif %}
+{% if filter.failregex is defined %}
+failregex = {{filter.failregex}}
+{% endif %}
+{% if filter.ignoreregex is defined %}
+ignoreregex = {{filter.name}}
+{% endif %}
+{% if filter.maxlines is defined %}
+maxlines = {{filter.maxlines}}
+{% endif %}
+{% if filter.datepattern is defined %}
+datepattern = {{filter.datepattern}}
+{% endif %}
+{% if filter.journalmatch is defined %}
+journalmatch = {{filter.journalmatch}}
+{% endif %}
+{% if filter.before is defined %}
+before = {{filter.before}}
+{% endif %}
+{% if filter.before is defined %}
+after = {{filter.after}}
+{% endif %}
+{% endfor %}
+{% endif %}

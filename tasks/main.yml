@@ -33,19 +33,29 @@
   tags: install
 
 
-# Push SSH jail config file
-- template:
+# Push  jail config file
+- name: Push jail file 
+  template:
     src: jail.d/jail.local.j2
     dest: "/etc/fail2ban/jail.d/{{fail2ban_jail_file | default('jail.local')}}"
   notify: restart fail2ban
   tags: jail
   when: fail2ban_jail is defined and fail2ban_jail
 
-# push local config
-- template:
+# Push local config
+- name: Push local config
+  template:
     src: fail2ban.d/fail2ban.local.j2
     dest: /etc/fail2ban/fail2ban.d/fail2ban.local
   notify: restart fail2ban
   tags: config
   when: fail2ban_config is defined and fail2ban_config
 
+# push local filter
+- name: Push local filter
+  template:
+    src: filter.d/filter.local.j2
+    dest: "/etc/fail2ban/filter.d/{{fail2ban_filter_file | default('filter.local')}}"
+  notify: restart fail2ban
+  tags: config
+  when: fail2ban_filter is defined and fail2ban_filter
