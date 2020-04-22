@@ -1,0 +1,90 @@
+{% if fail2ban_jail is defined and fail2ban_jail %}
+{% for jail in fail2ban_jail %}
+{% if jail.name is defined %}
+{% if jail.name == "DEFAULT" %}
+[{{jail.name}}]
+{% else %}
+{{ "" }}
+[{{jail.name}}]
+{% endif %}
+{% endif %}
+{% if jail.enabled is defined %}
+enabled = {{jail.enabled}}
+{% endif %}
+{% if jail.mode is defined %}
+mode = {{jail.name}}
+{% endif %}
+{% if jail.destemail is defined %}
+destemail = {{jail.destemail}}
+{% endif %}
+{% if jail.sender is defined %}
+sender = {{jail.sender}}
+{% endif %}
+{% if jail.mta is defined %}
+mta = {{jail.mta}}
+{% endif %}
+{% if jail.protocol is defined %}
+protocol = {{jail.protocol}}
+{% endif %}
+{% if jail.protocol is defined %}
+port = {{jail.port}}
+{% endif %}
+{% if jail.filter is defined %}
+filter = {{jail.filter}}
+{% endif %}
+{% if jail.logpath is defined %}
+logpath = {{jail.logpath}}
+{% endif %}
+{% if jail.logencoding is defined %}
+logencoding = {{jail.logencoding}}
+{% endif %}
+{% if jail.logtimezone is defined %}
+logtimezone = {{jail.logtimezone}}
+{% endif %}
+{% if jail.banaction is defined %}
+banaction = {{jail.banaction}}
+{% endif %}
+{% if jail.banaction_allports is defined %}
+banaction_allports = {{jail.banaction_allports}}
+{% endif %}
+{% if jail.action is defined %}
+action = {{jail.action}}
+{% endif %}
+{% if jail.ignoreself is defined %}
+ignoreself = {{jail.ignoreself}}
+{% endif %}
+{% if jail.ignoreip is defined %}
+ignoreip = {{jail.ignoreip}}
+{% endif %}
+{% if jail.ignorecommand is defined %}
+ignorecommand = {{jail.ignorecommand}}
+{% endif %}
+{% if jail.ignorecache is defined %}
+ignorecache = {{jail.ignorecache}}
+{% endif %}
+{% if jail.bantime is defined %}
+bantime = {{jail.bantime}}
+{% endif %}
+{% if jail.findtime is defined %}
+findtime = {{jail.findtime}}
+{% endif %}
+{% if jail.maxretry is defined %}
+maxretry = {{jail.maxretry}}
+{% endif %}
+{% if jail.backend is defined %}
+backend = {{jail.backend}}
+{% endif %}
+{% if jail.usedns is defined %}
+usedns = {{jail.usedns}}
+{% endif %}
+{% if jail.failregex is defined %}
+failregex = {{jail.failregex}}
+{% endif %}
+{% if jail.ignoreregex is defined %}
+ignoreregex = {{jail.ignoreregex}}
+{% endif %}
+{% if jail.maxmatches is defined %}
+maxmatches = {{jail.maxmatches}}
+{% endif %}
+{% endfor %}
+{% endif %}

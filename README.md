@@ -19,12 +19,9 @@ update_pkg: mise à jour ou non des paquets du système
 ## Options de configuration personnalisées
 fail2ban_config: liste des paramètres 
 
-## SSH Jail
-- ban_time: temps de banissment
-- ssh_port: port ssh
-- ignore_ip: liste d'IP à ignorer
-- max_retry: nombre d'échec permis
-- log_path: fichier log
+## configuration des jails
+fail2ban_jail: liste des jails et leurs paramètres
+fail2ban_jail_file: nom du fichier du/des jails
 ```
 Dependencies
 ------------

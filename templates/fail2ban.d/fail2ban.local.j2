@@ -1,0 +1,41 @@
+{% if fail2ban_config is defined and fail2ban_config %}
+{% for config in fail2ban_config %}
+{% if config.name is defined %}
+{% if config.name == "DEFAULT" or config.name == "Definition" %}
+[{{config.name}}]
+{% else %}
+{{ "" }}
+[{{config.name}}]
+{% endif %}
+{% endif %}
+{% if config.loglevel is defined %}
+loglevel = {{config.loglevel}}
+{% endif %}
+{% if config.logtarget is defined %}
+logtarget = {{config.logtarget}}
+{% endif %}
+{% if config.socket is defined %}
+socket = {{config.socket}}
+{% endif %}
+{% if config.syslogsocket is defined %}
+syslogsocket = {{config.syslogsocket}}
+{% endif %}
+{% if config.pidfile is defined %}
+pidfile = {{config.pidfile}}
+{% endif %}
+{% if config.dbfile is defined %}
+dbfile = {{config.dbfile}}
+{% endif %}
+{% if config.dbmaxmatches is defined %}
+dbmaxmatches = {{config.dbmaxmatches}}
+{% endif %}
+{% if config.dbpurgeage is defined %}
+dbpurgeage = {{config.dbpurgeage}}
+{% endif %}
+{% if config.stacksize is defined %}
+stacksize = {{config.stacksize}}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+
