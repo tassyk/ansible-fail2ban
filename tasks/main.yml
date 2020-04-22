@@ -36,7 +36,7 @@
 # Push SSH jail config file
 - template:
     src: jail.d/jail.local.j2
-    dest: "/etc/fail2ban/jail.d/{{fail2ban_jail_file | defaul('jail.local')}}"
+    dest: "/etc/fail2ban/jail.d/{{fail2ban_jail_file | default('jail.local')}}"
   notify: restart fail2ban
   tags: jail
   when: fail2ban_jail is defined and fail2ban_jail
