@@ -57,5 +57,14 @@
     src: filter.d/filter.local.j2
     dest: "/etc/fail2ban/filter.d/{{fail2ban_filter_file | default('filter.local')}}"
   notify: restart fail2ban
-  tags: config
+  tags: filter
   when: fail2ban_filter is defined and fail2ban_filter
+
+# push local action
+- name: Push local action
+  template:
+    src: action.d/action.local.j2
+    dest: "/etc/fail2ban/action.d/{{fail2ban_action_file | default('action.local')}}"
+  notify: restart fail2ban
+  tags: action
+  when: fail2ban_action is defined and fail2ban_action

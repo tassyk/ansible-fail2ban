@@ -1,0 +1,30 @@
+{% if fail2ban_action is defined and fail2ban_action %}
+{% for action in fail2ban_action %}
+{% if action.name is defined %}
+{% if action.name == "Init" %}
+[{{action.name}}]
+{% else %}
+{{ "" }}
+[{{action.name}}]
+{% endif %}
+{% endif %}
+{% if action.actionstart is defined %}
+actionstart = {{action.actionstart}}
+{% endif %}
+{% if action.actionstop is defined %}
+actionstop = {{action.name}}
+{% endif %}
+{% if action.actioncheck is defined %}
+actioncheck = {{action.actioncheck}}
+{% endif %}
+{% if action.actionban is defined %}
+actionban = {{action.actionban}}
+{% endif %}
+{% if action.actionunban is defined %}
+actionunban = {{action.actionunban}}
+{% endif %}
+{% if action.timeout is defined %}
+timeout = {{action.timeout}}
+{% endif %}
+{% endfor %}
+{% endif %}
