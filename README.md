@@ -22,6 +22,9 @@ fail2ban_config: liste des paramètres
 ## configuration des jails
 fail2ban_jail: liste des jails et leurs paramètres
 fail2ban_jail_file: nom du fichier du/des jails
+
+## Remarque: pour les filtres et actions, il existe aussi des templates pour créer (cf templates)
+
 ```
 Dependencies
 ------------

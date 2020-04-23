@@ -26,7 +26,7 @@ mta = {{jail.mta}}
 {% if jail.protocol is defined %}
 protocol = {{jail.protocol}}
 {% endif %}
-{% if jail.protocol is defined %}
+{% if jail.port is defined %}
 port = {{jail.port}}
 {% endif %}
 {% if jail.filter is defined %}

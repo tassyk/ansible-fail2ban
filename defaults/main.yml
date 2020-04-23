@@ -19,3 +19,7 @@ fail2ban_jail:
  - name: sshd
    port: ssh
    enabled: true
+
+
+#fail2ban_action
+#fail2ban_filter
