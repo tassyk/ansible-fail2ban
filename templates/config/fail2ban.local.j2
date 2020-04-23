@@ -1,8 +1,0 @@
-{% if fail2ban_config is defined and fail2ban_config %}
-[Definition]
-{% for config in fail2ban_config %}
-{{config}}
-{% endfor %}
-{% endif %}
-
-
